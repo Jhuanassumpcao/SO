@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <time.h>
 
 #define MAX_DEPTH 2
 
@@ -30,12 +31,14 @@ void create_processes(int current_depth, int max_depth, pid_t parent_pid) {
 
 int main() {
     printf("Creating process tree...\n");
-
+	clock_t start_time = clock();
     pid_t main_pid = getpid();
-    printf("n=0 C[%d, %d]\n", main_pid, main_pid);
+
+    printf("n=0 PID= %d (root)\n", main_pid);
     create_processes(1, MAX_DEPTH, main_pid);
     printf("T[%d, %d]\n", main_pid, main_pid);
 
-    printf("Process tree creation finished.\n");
+	clock_t end_time = clock();
+    printf("Process tree creation finished in %f seconds.\n", (double)(end_time - start_time) / CLOCKS_PER_SEC);
     return 0;
 }
