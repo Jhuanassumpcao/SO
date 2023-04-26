@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-#define TREE_HEIGHT 4
+#define TREE_HEIGHT 2
 
 void create_tree(int height, pid_t parent_pid) {
     if (height == 0) {
@@ -36,7 +36,7 @@ int main() {
     printf("Creating process tree...\n");
 
     pid_t main_pid = getpid();
-    printf("n=%d C[%d, %d]\n", TREE_HEIGHT, main_pid, main_pid);
+    printf("n=0 PID= %d (root)\n", main_pid);
     create_tree(TREE_HEIGHT, main_pid);
     printf("T[%d, %d]\n", main_pid, main_pid);
 
