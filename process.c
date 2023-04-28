@@ -116,7 +116,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Escrever resultados no arquivo
+    // Write results
 	fprintf(file, "Number of depth: %d\n", max_depth);
     fprintf(file, "Average execution time for Branch: %f seconds\n", avg_branch);
     fprintf(file, "Average execution time for Free: %f seconds\n", avg_free);
