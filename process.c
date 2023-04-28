@@ -66,8 +66,6 @@ int main(int argc, char* argv[]) {
 
     printf("Creating process tree with max_depth=%d...\n", max_depth);
 
-    
-
     double times_branch[30];
     double times_free[30];
     
@@ -119,6 +117,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Escrever resultados no arquivo
+	fprintf(file, "Number of depth: %d\n", max_depth);
     fprintf(file, "Average execution time for Branch: %f seconds\n", avg_branch);
     fprintf(file, "Average execution time for Free: %f seconds\n", avg_free);
     fprintf(file, "\n");

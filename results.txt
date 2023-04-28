@@ -1,0 +1,40 @@
+Number of depth: 1
+Average execution time for Branch: 0.000203 seconds
+Average execution time for Free: 0.000395 seconds
+
+Number of depth: 2
+Average execution time for Branch: 0.000235 seconds
+Average execution time for Free: 0.000449 seconds
+
+Number of depth: 3
+Average execution time for Branch: 0.000249 seconds
+Average execution time for Free: 0.000468 seconds
+
+Number of depth: 4
+Average execution time for Branch: 0.000242 seconds
+Average execution time for Free: 0.000462 seconds
+
+Number of depth: 5
+Average execution time for Branch: 0.000243 seconds
+Average execution time for Free: 0.000461 seconds
+
+Number of depth: 6
+Average execution time for Branch: 0.000273 seconds
+Average execution time for Free: 0.000518 seconds
+
+Number of depth: 7
+Average execution time for Branch: 0.000302 seconds
+Average execution time for Free: 0.000577 seconds
+
+Number of depth: 8
+Average execution time for Branch: 0.000302 seconds
+Average execution time for Free: 0.000571 seconds
+
+Number of depth: 9
+Average execution time for Branch: 0.000291 seconds
+Average execution time for Free: 0.000559 seconds
+
+Number of depth: 10
+Average execution time for Branch: 0.000301 seconds
+Average execution time for Free: 0.000582 seconds
+
