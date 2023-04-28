@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
 
 	    printf("--- Branch creation finished ---\n");
         clock_t end_time_branch = clock();
-        times_branch[i] = (double)(end_time_free - start_time_free) / CLOCKS_PER_SEC;
+        times_branch[i] = (double)(end_time_branch - start_time_branch) / CLOCKS_PER_SEC;
 
 	    printf("\n");
 	    printf("--------- Free ---------\n");
