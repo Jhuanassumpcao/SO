@@ -7,7 +7,32 @@
 
 #define MAX_DEPTH 2
 
-void create_processes(int current_depth, int max_depth, pid_t parent_pid) {
+void create_branch(int current_depth, int max_depth, pid_t parent_pid) {
+    if (current_depth > max_depth) {
+        return;
+    }
+
+    pid_t pid1;
+    if ((pid1 = fork()) == 0) { // child process 1
+        printf("n=%d C[%d, %d]\n", current_depth, getpid(), parent_pid);
+        create_processes(current_depth + 1, max_depth, getpid());
+        printf("T[%d, %d]\n", getpid(), parent_pid);
+        exit(0);
+    } else { // parent process
+        waitpid(pid1, NULL, 0); // wait for child process 1 to finish
+
+        pid_t pid2;
+        if ((pid2 = fork()) == 0) { // child process 2
+            printf("n=%d C[%d, %d]\n", current_depth, getpid(), parent_pid);
+            create_processes(current_depth + 1, max_depth, getpid());
+            printf("T[%d, %d]\n", getpid(), parent_pid);
+            exit(0);
+        } else { // parent process
+            waitpid(pid2, NULL, 0); // wait for child process 2 to finish
+        }
+    }
+}
+void create_free(int current_depth, int max_depth, pid_t parent_pid) {
     if (current_depth > max_depth) {
         return;
     }
