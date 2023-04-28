@@ -122,7 +122,7 @@ int main(int argc, char* argv[]) {
     fprintf(file, "Average execution time for Free: %f seconds\n", avg_free);
     fprintf(file, "\n");
 
-    // Fechar arquivo
+    // Close file
     fclose(file);
 
     return 0;
