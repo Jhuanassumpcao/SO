@@ -66,29 +66,48 @@ int main(int argc, char* argv[]) {
 
     printf("Creating process tree with max_depth=%d...\n", max_depth);
 
-    clock_t start_time_branch = clock();
-	clock_t start_time_free = clock();
-    pid_t main_pid = getpid();
+    
 
-	printf("\n--------- Branch ---------\n");
+    double times_branch[30];
+    double times_free[30];
+    
+    for(int i = 0; i < 30; i++){
+        clock_t start_time_branch = clock();
+	    clock_t start_time_free = clock();
+        pid_t main_pid = getpid();
 
-    printf("n=0 PID=%d (root)\n", main_pid);
-    create_branch(1, max_depth, main_pid);
+        printf("\n--------- Branch ---------\n");
 
-	printf("--- Branch creation finished ---\n");
-	printf("\n");
-	printf("--------- Free ---------\n");
+        printf("n=0 PID=%d (root)\n", main_pid);
+        create_branch(1, max_depth, main_pid);
 
-	printf("n=0 PID=%d (root)\n", main_pid);
-    create_free(1, max_depth, main_pid);
+	    printf("--- Branch creation finished ---\n");
+        clock_t end_time_branch = clock();
+        times_branch[i] = (double)(end_time_free - start_time_free) / CLOCKS_PER_SEC;
 
-	printf("--- Free creation finished ---\n");
+	    printf("\n");
+	    printf("--------- Free ---------\n");
+        printf("n=0 PID=%d (root)\n", main_pid);
+        create_free(1, max_depth, main_pid);
 
-    printf("\nFim PID = %d(root)\n", main_pid);
+	    printf("--- Free creation finished ---\n");
+        clock_t end_time_free = clock();
+        times_free[i] = (double)(end_time_free - start_time_free) / CLOCKS_PER_SEC;
 
-    clock_t end_time_branch = clock();
-	clock_t end_time_free = clock();
-    printf("Branch execution time in %f seconds.\n", (double)(end_time_branch - start_time_branch) / CLOCKS_PER_SEC);
-	printf("Free execution time in %f seconds.\n", (double)(end_time_free - start_time_free) / CLOCKS_PER_SEC);
+        printf("\nFim PID = %d(root)\n", main_pid);
+    }
+
+	double sum_branch = 0, sum_free = 0;
+    for (int i = 0; i < 30; i++) {
+        sum_branch += times_branch[i];
+        sum_free += times_free[i];
+    }
+
+    double avg_branch = sum_branch / 30;
+    double avg_free = sum_free / 30;
+
+    printf("\nAverage execution time for Branch: %f seconds\n", avg_branch);
+    printf("Average execution time for Free: %f seconds\n", avg_free);
+
     return 0;
 }
