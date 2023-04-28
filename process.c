@@ -84,6 +84,7 @@ int main(int argc, char* argv[]) {
 	    printf("--- Branch creation finished ---\n");
         clock_t end_time_branch = clock();
         times_branch[i] = (double)(end_time_branch - start_time_branch) / CLOCKS_PER_SEC;
+		printf("Branch execution time in %f seconds.\n", times_branch[i]);
 
 	    printf("\n");
 	    printf("--------- Free ---------\n");
@@ -93,6 +94,7 @@ int main(int argc, char* argv[]) {
 	    printf("--- Free creation finished ---\n");
         clock_t end_time_free = clock();
         times_free[i] = (double)(end_time_free - start_time_free) / CLOCKS_PER_SEC;
+		printf("Free execution time in %f seconds.\n", times_free[i]);
 
         printf("\nFim PID = %d(root)\n", main_pid);
     }
