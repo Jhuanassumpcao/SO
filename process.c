@@ -70,13 +70,12 @@ int main(int argc, char* argv[]) {
     double times_free[30];
     
     for(int i = 0; i < 30; i++){
-        clock_t start_time_branch = clock();
-	    clock_t start_time_free = clock();
         pid_t main_pid = getpid();
 
         printf("\n--------- Branch ---------\n");
 
         printf("n=0 PID=%d (root)\n", main_pid);
+		clock_t start_time_branch = clock();
         create_branch(1, max_depth, main_pid);
 
 	    printf("--- Branch creation finished ---\n");
@@ -87,6 +86,7 @@ int main(int argc, char* argv[]) {
 	    printf("\n");
 	    printf("--------- Free ---------\n");
         printf("n=0 PID=%d (root)\n", main_pid);
+		clock_t start_time_free = clock();
         create_free(1, max_depth, main_pid);
 
 	    printf("--- Free creation finished ---\n");
