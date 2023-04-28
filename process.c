@@ -109,20 +109,20 @@ int main(int argc, char* argv[]) {
     printf("\nAverage execution time for Branch: %f seconds\n", avg_branch);
     printf("Average execution time for Free: %f seconds\n", avg_free);
 
-    // Abrir arquivo para escrita
+    // Open file
     FILE* file = fopen("results.txt", "a");
     if (!file) {
         printf("Error opening file.\n");
         return 1;
     }
 
-    // Escrever resultados no arquivo
+    // Write results
 	fprintf(file, "Number of depth: %d\n", max_depth);
     fprintf(file, "Average execution time for Branch: %f seconds\n", avg_branch);
     fprintf(file, "Average execution time for Free: %f seconds\n", avg_free);
     fprintf(file, "\n");
 
-    // Fechar arquivo
+    // Close file
     fclose(file);
 
     return 0;
