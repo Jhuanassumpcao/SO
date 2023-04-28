@@ -5,8 +5,6 @@
 #include <sys/types.h>
 #include <time.h>
 
-#define FILENAME "execution_count.txt"
-
 void create_branch(int current_depth, int max_depth, pid_t parent_pid) {
     if (current_depth > max_depth) {
         return;
@@ -68,12 +66,7 @@ int main(int argc, char* argv[]) {
 
     printf("Creating process tree with max_depth=%d...\n", max_depth);
 
-    FILE* fp = fopen(FILENAME, "r");
-    int num_executions = 0;
-    if (fp) {
-        fscanf(fp, "%d", &num_executions);
-        fclose(fp);
-    }
+    
 
     double times_branch[30];
     double times_free[30];
@@ -125,15 +118,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    num_executions++;
+    // Escrever resultados no arquivo
+    fprintf(file, "Average execution time for Branch: %f seconds\n", avg_branch);
+    fprintf(file, "Average execution time for Free: %f seconds\n", avg_free);
+    fprintf(file, "\n");
 
-    fp = fopen(FILENAME, "w");
-    if (fp) {
-        fprintf(fp, "%d\n", num_executions);
-        fprintf(fp, "Average execution time for Branch: %f seconds\n", avg_branch);
-        fprintf(fp, "Average execution time for Free: %f seconds\n", avg_free);
-        fclose(fp);
-    }
+    // Fechar arquivo
+    fclose(file);
 
     return 0;
 }
